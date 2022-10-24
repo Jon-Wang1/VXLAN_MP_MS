@@ -201,18 +201,18 @@ vpc domain 12
   
 # 配置Peer-link
 interface Ethernet1/7
-  switchport mode trunk
   channel-group 12 mode active
 interface port-channel12
+  switchport
   switchport mode trunk
   spanning-tree port type network
   vpc peer-link
 
 # 配置pvc
 interface Ethernet1/3
-  switchport access vlan 101
   channel-group 1 mode active
 interface port-channel1
+  switchport
   switchport access vlan 101
   vpc 1
 ```
