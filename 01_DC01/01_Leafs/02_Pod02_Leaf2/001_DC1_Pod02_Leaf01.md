@@ -8,7 +8,7 @@ feature vn-segment-vlan-based
 feature nv overlay
 
 fabric forwarding anycast-gateway-mac 0000.0000.1234
-ip pim ssm range 232.0.0.0/8
+ip pim ssm range 225.0.0.0/8
 ip pim bsr forward listen
 vlan 1,101-102,201-202,3001-3002
 vlan 101
