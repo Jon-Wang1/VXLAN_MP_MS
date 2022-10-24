@@ -76,6 +76,30 @@ interface Ethernet1/1-6
 
 ```
 
+### 启用EVPN控制平面和MP-BGP
+```text
+nv overlay evpn
+feature bgp
+router bgp 65001
+  address-family l2vpn evpn
+    retain route-target all
+  template peer VTEP
+    remote-as 65001
+    update-source loopback0
+    address-family l2vpn evpn
+      send-community
+      send-community extended
+      route-reflector-client
+  neighbor 10.1.1.1
+    inherit peer VTEP
+  neighbor 10.1.1.2
+    inherit peer VTEP
+  neighbor 10.1.1.3
+    inherit peer VTEP
+  neighbor 10.1.1.4
+    inherit peer VTEP
+   
+```
 
 
 
