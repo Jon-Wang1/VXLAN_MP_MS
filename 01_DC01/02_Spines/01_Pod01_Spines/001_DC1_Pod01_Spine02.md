@@ -100,4 +100,24 @@ router bgp 65001
    
 ```
 
+#### Multi-Pod，配置Pod之间的BGP
+```text
+route-map UN permit 10 
+  set ip next-hop unchanged
+router bgp 65001
+  template peer Pod2_RR
+    remote-as 65002
+    update-source loopback0
+    ebgp-multihop 2
+    address-family l2vpn evpn
+      send-community
+      send-community extended
+      route-map UN out
+      rewrite-evpn-rt-asn
+  neighbor 10.1.2.101
+    inherit peer Pod2_RR
+
+```
+
+
 
