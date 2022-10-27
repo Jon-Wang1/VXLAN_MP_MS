@@ -1,3 +1,36 @@
+#### 初始化
+```text
+hostname MPLS_Cloud
+no ip domain lookup
+line con 0
+ exec-timeout 0 0
+ logging synchronous
+interface Loopback0
+ ip address 1.1.1.1 255.255.255.255
+!
+interface Ethernet0/0
+ ip address 100.1.1.254 255.255.255.0
+ no shutdown
+!
+interface Ethernet0/1
+ ip address 100.1.2.254 255.255.255.0
+ no shutdown
+!
+interface Ethernet0/2
+ ip address 200.1.1.254 255.255.255.0
+ no shutdown
+!
+interface Ethernet0/3
+ ip address 200.1.2.254 255.255.255.0
+ no shutdown
+```
+
+
+
+
+
+
+
 
 MPLS_Cloud>
 MPLS_Cloud>
@@ -86,19 +119,19 @@ interface Loopback0
 !
 interface Ethernet0/0
  ip address 100.1.1.10 255.255.255.0
- duplex auto
+ no shutdown
 !
 interface Ethernet0/1
  ip address 100.1.2.10 255.255.255.0
- duplex auto
+ no shutdown
 !
 interface Ethernet0/2
  ip address 100.2.1.10 255.255.255.0
- duplex auto
+ no shutdown
 !
 interface Ethernet0/3
  ip address 100.2.2.10 255.255.255.0
- duplex auto
+ no shutdown
 !
 router bgp 10000
  bgp log-neighbor-changes
