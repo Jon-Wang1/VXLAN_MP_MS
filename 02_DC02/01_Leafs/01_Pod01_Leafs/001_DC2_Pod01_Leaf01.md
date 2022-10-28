@@ -30,7 +30,6 @@ interface Ethernet1/1
 #### PIM配置
 ```markdown
 feature pim
-ip pim ssm range 225.0.0.0/8
 ip pim bsr forward listen
 interface loopback0
   ip pim sparse-mode
@@ -120,7 +119,7 @@ evpn
 
 #### 为二层VNI配置SVI，并在SVI下启用任意播网关
 ```markdown
-fabric forwarding anycast-gateway-mac 0000.0200.1234
+fabric forwarding anycast-gateway-mac 0000.0000.1234
 
 interface Vlan101
   no shutdown

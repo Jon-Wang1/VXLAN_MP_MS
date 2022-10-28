@@ -55,7 +55,6 @@ interface Ethernet1/7
 #### PIM配置
 ```markdown
 feature pim
-ip pim ssm range 225.0.0.0/8
 ip pim bsr forward listen
 interface loopback0
   ip pim sparse-mode
@@ -69,11 +68,11 @@ interface Ethernet1/6-7
 ```text
 nv overlay evpn
 feature bgp
-router bgp 65002
+router bgp 65102
   address-family l2vpn evpn
     retain route-target all
   template peer VTEP
-    remote-as 65002
+    remote-as 65102
     update-source loopback0
     address-family l2vpn evpn
       send-community
@@ -91,9 +90,9 @@ router bgp 65002
 ```text
 route-map UN permit 10 
   set ip next-hop unchanged
-router bgp 65002
+router bgp 65102
   template peer Pod1_RR
-    remote-as 65001
+    remote-as 65101
     update-source loopback0
     ebgp-multihop 2
     address-family l2vpn evpn

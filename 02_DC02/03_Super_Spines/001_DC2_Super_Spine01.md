@@ -37,8 +37,6 @@ interface loopback0
  ip pim sparse-mode
 interface range ethernet 0/0-3
  ip pim sparse-mode
-ip pim bsr-candidate Loopback0 0
-ip pim rp-candidate loopback 0 priority 100
 
 ```
 

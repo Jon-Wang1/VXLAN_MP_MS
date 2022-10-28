@@ -23,9 +23,21 @@ interface Ethernet0/2
 interface Ethernet0/3
  ip address 200.1.2.254 255.255.255.0
  no shutdown
+interface Ethernet1/0
+ ip address 6.6.6.254 255.255.255.0
+ no shutdown
+
 ```
 
-
+#### BGP
+```text
+router bgp 10000
+ bgp log-neighbor-changes
+ neighbor 100.1.1.1 remote-as 65100
+ neighbor 100.1.2.1 remote-as 65100
+ neighbor 200.1.1.1 remote-as 65200
+ neighbor 200.1.2.1 remote-as 65200
+```
 
 
 

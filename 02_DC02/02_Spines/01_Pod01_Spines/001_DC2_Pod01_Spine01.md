@@ -27,6 +27,7 @@ interface Ethernet1/7
 ```
 
 #### Underlay配置
+
 ```markdown
 feature ospf
 router ospf 1
@@ -42,10 +43,11 @@ interface Ethernet1/7
 
 
 ```
+
 #### PIM配置
+
 ```markdown
 feature pim
-ip pim ssm range 225.0.0.0/8
 ip pim bsr forward listen
 interface loopback0
   ip pim sparse-mode
@@ -58,6 +60,7 @@ interface Ethernet1/7
 ```
 
 ### 启用EVPN控制平面和MP-BGP
+
 ```text
 nv overlay evpn
 feature bgp
@@ -76,6 +79,25 @@ router bgp 65201
   neighbor 10.2.1.2
     inherit peer VTEP
 
+```
+#### 配置到BGW的BGP配置
+```text
+route-map UN permit 10 
+  set ip next-hop unchanged
+router bgp 65201
+  template peer BGWs
+    remote-as 65200
+    update-source loopback0
+    ebgp-multihop 2
+    address-family l2vpn evpn
+      send-community
+      send-community extended
+      route-map UN out
+      rewrite-evpn-rt-asn
+  neighbor 200.0.1.1
+    inherit peer BGWs
+  neighbor 200.0.1.2
+    inherit peer BGWs
 ```
 
 
